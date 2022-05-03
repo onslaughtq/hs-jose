@@ -332,7 +332,7 @@ bestJWSAlg jwk = case view jwkMaterial jwk of
       Types.Base64Integer n = view rsaN k
     in
       if n >= 2 ^ (2040 :: Integer)
-      then pure JWA.JWS.PS512
+      then pure JWA.JWS.RS256
       else throwing_ _KeySizeTooSmall
   OctKeyMaterial (OctKeyParameters (Types.Base64Octets k))
     | B.length k >= 512 `div` 8 -> pure JWA.JWS.HS512
